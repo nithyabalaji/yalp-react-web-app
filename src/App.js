@@ -1,24 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from "./Home"
+import Search from './Search';
+import Login from './Login';
+import Register from './Register';
+import Profile from './Profile/index';
+import ProfileEdit from './Profile/Edit/index';
+import { BrowserRouter, HashRouter } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router";
+import { combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
+import reviews from "./reducers/reviews";
+import user from './reducers/user';
+import restaurants from './reducers/restaurants'
+import profile from './reducers/profile'
+
+const reducer = combineReducers({ reviews, user, profile, restaurants });
+const store = createStore(reducer);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/profile/edit/:id" element={<ProfileEdit />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

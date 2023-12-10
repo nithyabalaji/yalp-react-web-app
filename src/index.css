@@ -11,3 +11,130 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-purple {
+  background-color: #431082;
+}
+
+.bg-light-purple {
+  background-color: #e6dff7;
+}
+
+.bg-error {
+  background-color: rgba(255, 0, 0, 0.2)
+}
+
+.purple {
+  color: #9055d9;
+}
+
+.btn-primary.purple {
+  background-color: #9055d9;
+  border-color: #9055d9;
+}
+
+.btn-primary.purple:hover {
+  background-color: #431082;
+  border-color: #9055d9;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.font-100px {
+  font-size: 100px;
+}
+
+.flex-row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/*font sizes*/
+.font-60px {
+  font-size: 60px;
+}
+.font-80px {
+  font-size: 80px;
+}
+.font-25px {
+  font-size: 25px;
+}
+
+.font-20px {
+  font-size: 20px;
+}
+.font-18px {
+  font-size: 18px;
+}
+
+/*font weights*/
+.font-bold {
+  font-weight: bold;
+}
+
+/*font decorations*/
+.font-shadow {
+  text-shadow: 2px 2px 8px black;
+}
+.font-stroke-black-2px {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
+/*font colors*/
+.font-color-white {
+  color: white;
+}
+.color-darkgray {
+  color: grey;
+}
+
+
+/*borders*/
+.rounded-border-30px {
+  border-radius: 30px;
+}
+
+/*width*/
+.small-btn {
+  width: 100px;
+  font-size: 12px;
+  padding: 4px;
+}
+
+input {
+  color: black !important;
+  z-index: 99;
+  height: 60px;
+}
+
+input::placeholder {
+  color: gray !important;
+}
+
+input.form-control:focus, select.form-select:focus {
+  border-color: #431082;
+  box-shadow: none !important;
+}
+
+
+.search-box{
+  width: 50% !important;
+  background-color: white;
+}
+
+.font-60px {
+  font-size: 60px;
+}
+
+.font-20px {
+  font-size: 20px;
+}
+
