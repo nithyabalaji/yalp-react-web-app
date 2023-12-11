@@ -3,7 +3,7 @@ import Navigation from '../Navigation';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { findAllReviews } from "../Server/review/client";
-import RecentReviewItem from "./RecentReviewItem";
+import RecentReviewItemsList from "./RecentReviewItemsList";
 
 const Home = (user) => {
     const currentUser = useSelector(state => state.user);
@@ -13,20 +13,14 @@ const Home = (user) => {
     console.log("----reviews");
     console.log(reviews);
     const dispatch = useDispatch();
-
-    //useEffect(() => findAllReviews(dispatch), []);
-    // const recentReviews = (reviews) => {
-    //     const sortedReviews = reviews.sort((a,b) => {
-    //         return new Date(b.date)- new Date(a.date);
-    //     });
-    
-    //     return sortedReviews.slice(0, 4);
-    // };
+    useEffect(() => {
+        findAllReviews(dispatch)
+    }, [dispatch])
 
     return (
         <div>
             <Navigation active="home" />
-            <div className='flex-row-container'>
+            <div className='flex-row-container border-bottom'>
                 <div>
                     <img src="/images/restaurant_eating.jpg" />
                 </div>
@@ -68,9 +62,7 @@ const Home = (user) => {
                     </div>
                     <div className="card-text">
                         <h2 className='purple'>Most Recent Reviews</h2>
-                        <ul>
-                            {/* {RecentReviews(reviews).map(review => <RecentReviewItem review={review}/>)} */}
-                        </ul>
+                        <RecentReviewItemsList/>
                     </div>
                 </div>
             </div>

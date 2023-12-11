@@ -1,8 +1,10 @@
 const REVIEW_API = 'http://localhost:4000/api/reviews';
 
 export const findAllReviews = (dispatch) =>
-    fetch(REVIEW_API)
-        .then(response => response.json())
+    fetch(REVIEW_API, {
+        method: 'GET',
+    })
+        .then(response => {console.log("fetch all reviews", response.json); return response.json()})
         .then(reviews => dispatch({
             type: 'find-all-reviews',
             reviews

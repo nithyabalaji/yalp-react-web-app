@@ -18,7 +18,7 @@ const Profile = () => {
     console.log("--- user before getUser")
     console.log(user);
     const restaurants = useSelector(selectRestaurants)
-    var author_id = user ? user.username : null;
+    var author_id = user ? user._id : null;
     const navigate = useNavigate();
     //useEffect(()=>getUser(dispatch), [dispatch])
     useEffect(() => {
@@ -29,7 +29,7 @@ const Profile = () => {
             console.log("getting user by id");
             getUser(dispatch);
         }
-        author_id = user ? user.username : null;
+        author_id = user ? user._id : null;
         if (author_id) {
             findRestaurantsByAuthor(dispatch, author_id);
         }
