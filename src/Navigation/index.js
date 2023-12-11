@@ -34,7 +34,7 @@ const Navigation = ({active}) => {
                             user && user.role === 'HOST' &&
                             <li className="nav-item">
                             <Link to="/post"
-                            className={`nav-link`}>
+                            className={`nav-link ${active === 'post' ? 'active' : ''}`}>
                             Post
                             </Link>
                             </li>

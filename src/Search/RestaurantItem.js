@@ -50,7 +50,7 @@ const RestaurantItem = ({restaurant}) => {
                 <div className="col-md-5 d-none d-md-block">
                     <div className="d-flex justify-content-end">
                         <img
-                            src={restaurant.photo? restaurant.photo.images.large.url:"/images/restaurant_eating.jpg"}
+                            src={restaurant.photo && restaurant.photo.images.large.url != ""  ? restaurant.photo.images.large.url :"/images/restaurant_eating.jpg"}
                             alt="avatar"
                             width="400px"/>
                     </div>

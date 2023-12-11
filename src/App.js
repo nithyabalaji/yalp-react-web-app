@@ -6,6 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import Profile from './Profile/index';
 import ProfileEdit from './Profile/Edit/index';
+import PostRestaurant from './PostRestaurant';
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
 import { combineReducers, createStore } from "redux";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/edit/:id" element={<ProfileEdit />} />
+          <Route path="/post" element={<PostRestaurant/>}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>
