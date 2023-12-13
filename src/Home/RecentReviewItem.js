@@ -10,7 +10,7 @@ const RecentReviewItem = ({ review }) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
     const [restaurant, setRestaurant] = useState({});
-    useEffect(() => fetchDetails(review.restaurant.location_id).then(data => setRestaurant(data)), []);
+    /*useEffect(() => fetchDetails(review.restaurant.location_id).then(data => setRestaurant(data)), []);*/
     const convertDate = (date) => {
         const dateObj = new Date(date);
         const options = {
@@ -21,7 +21,6 @@ const RecentReviewItem = ({ review }) => {
         return new Intl.DateTimeFormat('en-US', options).format(dateObj);
     }
 
-    console.log(review.restaurant);
 
     return (
         <li className="list-group-item">
