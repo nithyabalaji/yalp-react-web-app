@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 //import Rating from "../Reviews/Rating";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDetails } from "../Server/api/client";
+import { fetchDetails } from '../Server/api/client';
 
 const selectUser = (state) => state.user;
 
@@ -10,7 +10,7 @@ const RecentReviewItem = ({ review }) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
     const [restaurant, setRestaurant] = useState({});
-    /*useEffect(() => fetchDetails(review.restaurant.location_id).then(data => setRestaurant(data)), []);*/
+    useEffect(() => {fetchDetails(review.restaurant.location_id).then(data => setRestaurant(data))}, []);
     const convertDate = (date) => {
         const dateObj = new Date(date);
         const options = {

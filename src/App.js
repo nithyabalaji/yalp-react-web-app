@@ -33,7 +33,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/edit/:id" element={<ProfileEdit />} />
-          <Route path="/details/local/:id" element={<DetailsLocalScreen/>}></Route>
+          <Route path="/details/:id" element={<Details/>} />
+          <Route path="/details/local/:id" element={<DetailsLocalScreen/>} />
         </Routes>
       </BrowserRouter>
     </Provider>

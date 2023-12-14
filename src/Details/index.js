@@ -13,7 +13,6 @@ import { getUser } from "../Server/users/client";
 const Details = () => {
   // assuming path is /details/:id
   const { id } = useParams();
-  console.log(id);
   const dispatch = useDispatch();
   const [restaurant, setRestaurant] = useState({});
   const reviews = useSelector((state) => state.reviews);
@@ -24,7 +23,9 @@ const Details = () => {
     findReviewsByRestaurantId(id, dispatch);
   }, []);
 
-  useEffect(() => getUser(dispatch), [dispatch]);
+  useEffect(() => {
+    getUser(dispatch);
+  }, [dispatch]);
 
   return (
     <div>

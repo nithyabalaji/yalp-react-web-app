@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const RestaurantInfo = ({ restaurant }) => {
-  const photoURL = "/images/restaurant-eating.jpg";
+  const photoURL = "http://localhost:3000/images/restaurant_eating.jpg"
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const RestaurantInfo = ({ restaurant }) => {
           src={
             restaurant.photo
               ? restaurant.photo.images.large.url
-              : "/Images/restaurant-img-1.jpg"
+              : photoURL
           }
           width="80%"
         />
