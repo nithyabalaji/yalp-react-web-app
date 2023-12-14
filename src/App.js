@@ -5,6 +5,7 @@ import Search from './Search';
 import Login from './Login';
 import Register from './Register';
 import Profile from './Profile/index';
+import Details from './Details';
 import ProfileEdit from './Profile/Edit/index';
 import PostRestaurant from './PostRestaurant';
 import AllUsers from "./AllUsers";
@@ -16,6 +17,7 @@ import reviews from "./reducers/reviews";
 import user from './reducers/user';
 import restaurants from './reducers/restaurants'
 import profile from './reducers/profile'
+import DetailsLocalScreen from './Details/LocalDetailScreen';
 
 const reducer = combineReducers({ reviews, user, profile, restaurants });
 const store = createStore(reducer);
@@ -35,6 +37,8 @@ function App() {
           <Route path="/profile/edit/:id" element={<ProfileEdit />} />
           <Route path="/post" element={<PostRestaurant/>}></Route>
           <Route path="/users" element={<AllUsers/>}></Route>
+          <Route path="/details/:id" element={<Details/>} />
+          <Route path="/details/local/:id" element={<DetailsLocalScreen/>} />
         </Routes>
       </BrowserRouter>
     </Provider>
