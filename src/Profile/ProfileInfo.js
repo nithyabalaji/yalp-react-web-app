@@ -4,12 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const ProfileInfo = () => {
     const { id } = useParams();
-    console.log(id);
-    const selectUser = (state) => state.user;
+    //console.log(id);
+    const selectProfile = (state) => state.profile;
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const user = useSelector(selectUser)
-    console.log("============in profile component, user: ", user)
+    var user = useSelector(selectProfile);
 
     const handleEditProfile = () => {
         if (id) {

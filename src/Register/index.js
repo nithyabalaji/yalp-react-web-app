@@ -5,7 +5,7 @@ import Navigation from '../Navigation';
 
 const Register = () => {
     const [credentials, setCredentials] = useState({ username: "", password: "", email: "", role: "" });
-    const [errorMsg, setErrorMsg] = useState("error")
+    const [errorMsg, setErrorMsg] = useState()
 
     const navigate = useNavigate();
     const registerHandler = () => {

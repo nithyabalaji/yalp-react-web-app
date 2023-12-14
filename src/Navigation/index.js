@@ -2,10 +2,18 @@ import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import {useDispatch, useSelector} from 'react-redux';
+import {getUser,userLogout} from '../Server/users/client';
 
 const selectUser = (state) => state.user;
 const Navigation = ({active}) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        getUser(dispatch);
+    }, [dispatch])
     const user = useSelector(selectUser);
+    const handleLogout = async () => {
+        await userLogout(dispatch);
+    }
 
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-purple">
@@ -40,10 +48,20 @@ const Navigation = ({active}) => {
                             </li>
                         }
                         {
+                            user && user.role === 'ADMIN' &&
+                            <li className="nav-item">
+                            <Link to="/users"
+                            className={`nav-link ${active === 'users' ? 'active' : ''}`}>
+                            Users
+                            </Link>
+                            </li>
+                        }
+                        {
                             user &&
                             <li className="nav-item">
-                                <Link to="/logout"
-                                      className={`nav-link`}>
+                                <Link to="/home"
+                                      className={`nav-link`}
+                                      onClick={handleLogout}>
                                     Logout
                                 </Link>
                             </li>
@@ -64,12 +82,8 @@ const Navigation = ({active}) => {
                             </Link>
                             </li>
                         }
-                        <li className='flex-grow-1'>
-
-                        </li>
                         {user &&
                         <li className="nav-item float-end">
-
                             <Link to="/profile"
                                   className={`nav-link ${active === 'profile' ? 'active' : ''}`}>
                                   Profile

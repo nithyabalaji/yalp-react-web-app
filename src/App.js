@@ -8,6 +8,7 @@ import Profile from './Profile/index';
 import Details from './Details';
 import ProfileEdit from './Profile/Edit/index';
 import PostRestaurant from './PostRestaurant';
+import AllUsers from "./AllUsers";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
 import { combineReducers, createStore } from "redux";
@@ -34,12 +35,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/edit/:id" element={<ProfileEdit />} />
-<<<<<<< HEAD
           <Route path="/post" element={<PostRestaurant/>}></Route>
-=======
+          <Route path="/users" element={<AllUsers/>}></Route>
           <Route path="/details/:id" element={<Details/>} />
           <Route path="/details/local/:id" element={<DetailsLocalScreen/>} />
->>>>>>> a1
         </Routes>
       </BrowserRouter>
     </Provider>
