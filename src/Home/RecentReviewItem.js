@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import { fetchDetails } from "../Server/api/client";
-=======
-import { fetchDetails } from '../Server/api/client';
->>>>>>> a1
 
 const selectUser = (state) => state.user;
 
 const RecentReviewItem = ({ review }) => {
     const dispatch = useDispatch();
     const [restaurant, setRestaurant] = useState({});
-<<<<<<< HEAD
-    //useEffect(() => fetchDetails(review.restaurant.location_id).then(data => setRestaurant(data)), []);
-=======
     useEffect(() => {fetchDetails(review.restaurant.location_id).then(data => setRestaurant(data))}, []);
->>>>>>> a1
     const convertDate = (date) => {
         const dateObj = new Date(date);
         const options = {
