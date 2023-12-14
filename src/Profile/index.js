@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import ProfileInfo from './ProfileInfo';
 import Navigation from '../Navigation';
 import RestaurantPostList from './RestaurantPostList';
+import UserReviewList from './UserReviewList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, findUserById } from '../Server/users/client';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const selectUser = (state) => state.user;
 const selectProfile = (state) => state.profile;
-const selectRestaurants = (state) => state.restaurants;
 
 const Profile = () => {
     const { id } = useParams();
@@ -37,8 +37,6 @@ const Profile = () => {
         });
     }
 
-    const restaurants = useSelector(selectRestaurants);
-
     return (
         <div>
             <Navigation active="profile" />
@@ -47,8 +45,11 @@ const Profile = () => {
             {currentUser && user &&
                 <ProfileInfo />
             }
-            {currentUser && user &&
+            {currentUser && user && user.role == "HOST" &&
                 <RestaurantPostList user={user}/>
+            }
+            {currentUser && user && user.role == "USER" &&
+                <UserReviewList user={user}/>
             }
         </div>
 

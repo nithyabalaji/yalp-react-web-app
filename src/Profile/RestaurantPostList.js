@@ -24,7 +24,7 @@ const RestaurantPostList = ({ user }) => {
     const restaurants = useSelector(selectRestaurants);
 
     return (
-        <div>
+        <div className='p-3'>
             {user && user.role === 'HOST' &&
                 <h3 className="mt-4 purple">Restaurant posts by {user.username}</h3>}
             {currentUser && currentUser.role === 'HOST' && currentUser._id == user._id &&
