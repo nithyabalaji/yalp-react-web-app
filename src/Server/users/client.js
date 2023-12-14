@@ -54,11 +54,17 @@ export const findUserById = (dispatch, id) => {
 export const findAllUsers = () =>
     fetch(`${BASE_API}/users`)
         .then(res => { console.log("get all users", res.json); return res.json() })
-        // .then(user => dispatch({
-        //     type: "fetch-user",
-        //     user
-        // }))
         .catch(e => console.log(e))
+
+export const deleteUser = (user) =>
+    fetch(`${BASE_API}/users/${user._id}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+        }
+    })
+    .then(response => { console.log("delete user", response.json); return response.json() })
+    .catch(e => console.log(e))
 
 export const userLogout = (dispatch) =>
     fetch(`${BASE_API}/logout`)
@@ -82,46 +88,3 @@ export const updateUserProfile = (dispatch, info, uid) =>
                 type: "update-user-profile",
                 profile
             }))
-
-
-// export const login = async (credentials) => {
-//     const response = await request.post(`${USERS_API}/login`, credentials);
-//     return response.data;
-// };
-// export const account = async () => {
-//     const response = await request.post(`${USERS_API}/account`);
-//     return response.data;
-// };
-// export const updateUser = async (user) => {
-//     console.log(`Updated user id: ${user._id}`);
-//     const response = await request.put(`${USERS_API}/${user._id}`, user);
-//     return response.data;
-// };
-// export const findAllUsers = async () => {
-//     const response = await request.get(`${USERS_API}`);
-//     return response.data;
-// };
-// export const createUser = async (user) => {
-//     const response = await request.post(`${USERS_API}`, user);
-//     return response.data;
-// };
-
-// export const findUserById = async (id) => {
-//     const response = await request.get(`${BASE_API}/user/${id}`);
-//     return response.data;
-// };
-
-// export const deleteUser = async (user) => {
-//     const response = await request.delete(
-//         `${USERS_API}/${user._id}`);
-//     return response.data;
-// };
-// export const register = async (credentials) => {
-//     const response = await request.post(
-//         `${USERS_API}/register`, credentials);
-//     return response.data;
-// };
-// export const logout = async () => {
-//     const response = await request.post(`${USERS_API}/logout`);
-//     return response.data;
-// };  
