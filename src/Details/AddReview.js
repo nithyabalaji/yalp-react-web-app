@@ -18,7 +18,13 @@ const AddReview = ({restaurant, user}) => {
             date: new Date()
         }
         createReview(newReview, dispatch)
-            .then(status => navigate(`/details/${restaurant.location_id}`));
+        .then(status => {
+            if (restaurant.location_id) {
+                navigate(`/details/${restaurant.location_id}`);
+            } else {
+                navigate(`/details/local/${restaurant._id}`);
+            }
+        });
     }
 
     return (

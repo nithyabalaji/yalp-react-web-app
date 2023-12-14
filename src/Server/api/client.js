@@ -7,7 +7,7 @@ export const fetchRestaurants = (lat, lng) =>
       method: "GET",
       headers: {
         "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-        "x-rapidapi-key": "d5e50a5d13msh18e87c095b5740cp19cff1jsna6405b505319",
+        "x-rapidapi-key": "a69e55f2e1mshf1c74632750b2c9p1bc54ejsn6027f73bbf4c",
       },
     }
   )
@@ -20,7 +20,7 @@ let options = {
   params: { location_id: "293919", currency: "USD", lang: "en_US" },
   headers: {
     "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-    "x-rapidapi-key": "d5e50a5d13msh18e87c095b5740cp19cff1jsna6405b505319",
+    "x-rapidapi-key": "a69e55f2e1mshf1c74632750b2c9p1bc54ejsn6027f73bbf4c",
   },
 };
 

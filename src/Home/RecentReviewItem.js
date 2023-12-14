@@ -20,7 +20,6 @@ const RecentReviewItem = ({ review }) => {
         return new Intl.DateTimeFormat('en-US', options).format(dateObj);
     }
 
-
     return (
         <li className="list-group-item border">
             <div className="row p-3">
