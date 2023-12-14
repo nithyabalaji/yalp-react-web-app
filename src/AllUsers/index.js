@@ -4,9 +4,11 @@ import { BsTrash3Fill }
 import { Link } from "react-router-dom";
 import { findAllUsers, deleteUser } from '../Server/users/client';
 import Navigation from "../Navigation";
+import { useSelector } from "react-redux";
 
 function AllUsers() {
     const [users, setUsers] = useState([]);
+    const currentUser = useSelector(state => state.user);
 
     const userDelete = async (user) => {
         console.log("user to be deleted", user);
@@ -25,32 +27,36 @@ function AllUsers() {
     return (
         <div>
             <Navigation active={"users"} />
-            <div className="p-3">
-                <h3>User List</h3>
-                <table className="table w-75">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user._id}>
-                                <td><Link to={`/profile/${user._id}`}>
-                                    {user.username}
-                                </Link></td>
-                                <td>{user.role}</td>
-                                <td>
-                                    <button className="btn btn-danger" onClick={() => userDelete(user)}>
-                                        <BsTrash3Fill />
-                                    </button>
-                                </td>
-                            </tr>))}
-                    </tbody>
-                </table>
-            </div>
+            {(!currentUser || (currentUser && currentUser.role != "ADMIN")) &&
+                <h5 className="p-3">Must be logged in as an Admin to view page.</h5>}
+            {currentUser && currentUser.role == "ADMIN" &&
+                <div className="p-3">
+                    <h3>User List</h3>
+                    <table className="table w-75">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((user) => (
+                                <tr key={user._id}>
+                                    <td><Link to={`/profile/${user._id}`}>
+                                        {user.username}
+                                    </Link></td>
+                                    <td>{user.role}</td>
+                                    <td>
+                                        <button className="btn btn-danger" onClick={() => userDelete(user)}>
+                                            <BsTrash3Fill />
+                                        </button>
+                                    </td>
+                                </tr>))}
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>
     );
 }

@@ -15,8 +15,8 @@ const PostRestaurant = () => {
         {user && user.role ==='HOST' &&
         <PostInputs host={user}/>
         }
-        {!user &&
-        <h5>Please log in before checking your this page!</h5>
+        {(!user || (user && user.role != "HOST")) &&
+            <h5 className="p-3">Must be logged in as a Host to view this page.</h5>
         }
       </div>
 
