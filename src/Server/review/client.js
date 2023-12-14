@@ -4,7 +4,7 @@ export const findAllReviews = (dispatch) =>
     fetch(REVIEW_API, {
         method: 'GET',
     })
-        .then(response => {console.log("fetch all reviews", response.json); return response.json()})
+        .then(response => { console.log("fetch all reviews", response.json); return response.json() })
         .then(reviews => dispatch({
             type: 'find-all-reviews',
             reviews
@@ -13,6 +13,14 @@ export const findAllReviews = (dispatch) =>
 
 export const findReviewsByRestaurantId = (id, dispatch) =>
     fetch(`${REVIEW_API}/${id}`)
+        .then(response => response.json())
+        .then(reviews => dispatch({
+            type: 'find-reviews-by-rid',
+            reviews
+        }));
+
+export const findReviewsByLocalRestaurantId = (id, dispatch) =>
+    fetch(`${REVIEW_API}/local/${id}`)
         .then(response => response.json())
         .then(reviews => dispatch({
             type: 'find-reviews-by-rid',

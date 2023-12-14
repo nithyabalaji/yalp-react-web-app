@@ -58,7 +58,7 @@ const AddReview = ({restaurant, user}) => {
                 </select>
             </div>
             <button
-                className="btn btn-primary mt-3"
+                className="btn btn-primary purple mt-3"
                 onClick={createHandler}>
                 Add
             </button>

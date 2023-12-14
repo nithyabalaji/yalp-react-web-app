@@ -32,33 +32,35 @@ const Details = () => {
       <div>
         <Navigation active="find" />
       </div>
-      <div className="mb-5">
-        <RestaurantInfo restaurant={restaurant} />
-      </div>
-      <div className="mb-5">
-        <h1>Reviews</h1>
-        <div>
-          {reviews.length === 0 && <span>No Reviews Yet</span>}
-          <ul className="list-group">
-            {reviews.map((review) => {
-              return <ReviewItem review={review} />;
-            })}
-          </ul>
+      <div className="p-3">
+        <div className="mb-5">
+          <RestaurantInfo restaurant={restaurant} />
         </div>
-      </div>
-      <div className="mb-5">
-        <h1>Add a Review</h1>
-        {user && user.role === "USER" && (
-          <AddReview restaurant={restaurant} user={user} />
-        )}
-        {!user && (
-          <div className="alert alert-danger">
-            Please login to add a review.
+        <div className="mb-5">
+          <h1>Reviews</h1>
+          <div>
+            {reviews.length === 0 && <span>No Reviews Yet</span>}
+            <ul className="list-group">
+              {reviews.map((review) => {
+                return <ReviewItem review={review} />;
+              })}
+            </ul>
           </div>
-        )}
-        {user && user.role !== "USER" && (
-          <div className="alert alert-danger">Only user can add a review.</div>
-        )}
+        </div>
+        <div className="mb-5">
+          <h1>Add a Review</h1>
+          {user && user.role === "USER" && (
+            <AddReview restaurant={restaurant} user={user} />
+          )}
+          {!user && (
+            <div className="alert alert-danger">
+              Please login to add a review.
+            </div>
+          )}
+          {user && user.role !== "USER" && (
+            <div className="alert alert-danger">Only user can add a review.</div>
+          )}
+        </div>
       </div>
     </div>
   );
