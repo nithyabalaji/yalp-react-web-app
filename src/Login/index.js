@@ -9,11 +9,13 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const loginHandler = () => {
-        userLogin(dispatch, {
-            username: credentials.username,
-            password: credentials.password
-          }).then((res)=>{console.log("success", res); navigate('/profile')})
-              .catch()
+        userLogin(dispatch, credentials).then((res) => { console.log("success", res); navigate('/profile') })
+            // .then(response => { console.log("userLogin", response.json); return response.json() })
+            // .then(user => dispatch({
+            //     type: "user-login",
+            //     user
+            // }))
+            .catch()
     };
     return (
         <div>

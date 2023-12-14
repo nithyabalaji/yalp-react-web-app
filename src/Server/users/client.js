@@ -44,39 +44,43 @@ export const getUser = (dispatch) =>
 export const findUserById = (dispatch, id) => {
     fetch(`${BASE_API}/user/${id}`)
         .then(res => { console.log("get user by id", res.json); return res.json() })
-        .then(user => dispatch({
+        .then(profile => dispatch({
             type: "fetch-user-by-id",
-            user
+            profile
         }))
         .catch(e => console.log(e))
 };
 
-
-// export const isLoggedIn = () =>
-//     fetch(USER_API)
-//         .then(response => console.log("is logged in ", response))
+export const findAllUsers = () =>
+    fetch(`${BASE_API}/users`)
+        .then(res => { console.log("get all users", res.json); return res.json() })
+        // .then(user => dispatch({
+        //     type: "fetch-user",
+        //     user
+        // }))
+        .catch(e => console.log(e))
 
 export const userLogout = (dispatch) =>
     fetch(`${BASE_API}/logout`)
         .then(res => { console.log("user logout", res); return res })
-        // .then(response => dispatch({
-        //   type: "user-logout"
-        //   }))
+        .then(response => dispatch({
+          type: "user-logout"
+          }))
         .catch(e => console.error(e))
 
 
-export const updateUserProfile = (dispatch, info) =>
-    fetch(`${BASE_API}/user`, {
+export const updateUserProfile = (dispatch, info, uid) =>
+    fetch(`${BASE_API}/user/${uid}`, {
         method: 'PUT',
         body: JSON.stringify(info),
         headers: {
             'content-type': 'application/json',
         }
     }).then(response => { console.log("update user", response.json); return response.json() })
-        .then(user =>
+        .then(profile =>
             dispatch({
                 type: "update-user-profile",
-                user
+                profile
             }))
 
 

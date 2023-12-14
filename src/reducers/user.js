@@ -1,11 +1,12 @@
 const user = (state = null, action) => {
+    //console.log(action);
     switch (action.type) {
         case 'fetch-user':
             console.log("reducer fetch", action.user)
             return action.user
-        case 'fetch-user-by-id':
-            console.log("reducer fetch by id", action.user)
-            return action.user
+        // case 'fetch-user-by-id':
+        //     console.log("reducer fetch by id", action.user)
+        //     return action.user
         case 'user-login':
             console.log("reducer login", action.user)
             return action.user

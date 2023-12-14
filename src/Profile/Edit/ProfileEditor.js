@@ -9,13 +9,14 @@ const ProfileEdit = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const selectUser = (state) => state.user;
+    
     const user = useSelector(selectUser)
-    useEffect(() => {
-        if (id) {
-            findUserById(dispatch, id);
-            console.log(user);
-        }
-    }, [dispatch])
+    // useEffect(() => {
+    //     if (id) {
+    //         findUserById(dispatch, id);
+    //         console.log(user);
+    //     }
+    // }, [dispatch])
     const [updatedUser, setUser] = useState(user);
     console.log("============in profile component, user: ", user)
 
@@ -24,7 +25,7 @@ const ProfileEdit = () => {
             username: updatedUser.username,
             password: updatedUser.password,
             email: updatedUser.email,
-        }).then((res) => {console.log("Profile Saved!", res)})
+        }, id).then((res) => {console.log("Profile Saved!", res)})
             .catch(()=>console.log("update profile error"))
             navigate(`/profile`)
     }
