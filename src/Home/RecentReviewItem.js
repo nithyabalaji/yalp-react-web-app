@@ -40,11 +40,9 @@ const RecentReviewItem = ({ review }) => {
                             width="100px" />
                         <div className="d-flex align-items-center">
                             <div className="col-10 font-18px font-bold">
-                                <span className="purple">{review.user && review.user.username}</span>
-                                {/* <span className="badge bg-dark ms-3">
-                                    <a href={restaurant.website} className="font-color-white" target="_blank">
-                                        {restaurant.name}</a>
-                                </span> */}
+                                <Link to={`/profile/${review.user._id}`}>
+                                    <span className="purple">{review.user && review.user.username}</span>
+                                </Link>
                             </div>
                             <div className="col-2 d-flex justify-content-end">
                                 {review.rating}/5 <FaStar className='m-1 purple' />
@@ -59,15 +57,15 @@ const RecentReviewItem = ({ review }) => {
                             <div className="font-18px">
                             Restaurant: 
                             <Link to={`/details/${review.restaurant.location_id}`}>
-                                <span>{review.restaurant.restaurantName}</span>
+                                <span>{review.restaurant.name}</span>
                             </Link>
                         </div>
                         }
                         {review.restaurant._id &&
                             <div className="font-18px">
                             Restaurant: 
-                            <Link to={`/details/${review.restaurant._id}`}>
-                                <span>{review.restaurant.restaurantName}</span>
+                            <Link to={`/details/local/${review.restaurant._id}`}>
+                                <span>{review.restaurant.name}</span>
                             </Link>
                         </div>
                         }

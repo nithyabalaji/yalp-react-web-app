@@ -3,15 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchDetails } from "../Server/api/client";
 import RecentReviewItem from "./RecentReviewItem";
 
-const selectUser = (state) => state.user;
-
 const RecentReviewItemsList = () => {
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
-    const [restaurant, setRestaurant] = useState({});
     const reviews = useSelector(state => state.reviews);
-    console.log("----reviews");
-    console.log(reviews);
     
     const recentReviews = (reviews) => {
         const sortedReviews = reviews.sort((a,b) => {

@@ -31,6 +31,6 @@ export const fetchDetails = async (id) => {
       return response.data;
     } catch (error) {
       console.error('Error in fetchDetails:', error.message);
-      throw error; // Rethrow the error for further handling if needed
+      //throw error; // Rethrow the error for further handling if needed
     }
   };

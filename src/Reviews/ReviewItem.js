@@ -1,5 +1,6 @@
 import React from "react";
 import Rating from "./Rating";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteReview } from "../Server/review/client";
 import { convertDate } from "./convertDate";
@@ -18,7 +19,7 @@ const ReviewItem = ({ review }) => {
         <div className="col-md-2 d-none d-md-block text-center">
           <img
             alt="avatar"
-            src={review.user && review.user.avatarIcon}
+            src="/images/restaurant_eating.jpg"
             className="rounded-circle d-none d-md-inline"
             width="110px"
           />
@@ -32,14 +33,35 @@ const ReviewItem = ({ review }) => {
               width="100px"
             />
             <div className="d-flex align-items-center">
-              <div className="col-10 rf-font-18px rf-font-bold">
-                {review.user && review.user.username}
+              <div className="col-10 font-18px font-bold">
+                <Link to={`/profile/${review.user._id}`}>
+                  <span className="purple">{review.user && review.user.username}</span>
+                </Link>
               </div>
+              {/* <div className="col-10 rf-font-18px rf-font-bold">
+                {review.user && review.user.username}
+              </div> */}
               <div className="col-2 d-flex justify-content-end">
                 <Rating rating={review.rating} />
               </div>
             </div>
-            <div className="rf-color-darkgray">{convertDate(review.date)}</div>
+            {/* <div className="rf-color-darkgray">{convertDate(review.date)}</div> */}
+            {review.restaurant.location_id &&
+              <div className="font-18px">
+                Restaurant:
+                <Link to={`/details/${review.restaurant.location_id}`}>
+                  <span>{review.restaurant.name}</span>
+                </Link>
+              </div>
+            }
+            {review.restaurant._id &&
+              <div className="font-18px">
+                Restaurant:
+                <Link to={`/details/local/${review.restaurant._id}`}>
+                  <span>{review.restaurant.name}</span>
+                </Link>
+              </div>
+            }
             <div className="rf-font-18px">{review.content}</div>
             {user && review.user && user.username === review.user.username && (
               <button
